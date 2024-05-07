@@ -28,13 +28,13 @@ Route::get('overzicht-leveranciers', [LeveringController::class, 'leveranciers']
 
 Route::get('overzicht-geleverde-producten/{slug}', [LeveringController::class, 'geleverdeProducten'])->name('overzicht-geleverde-producten');
 
-Route::get('voeg-levering/{slug}/{rowin}', function ($leverancierId, $productId) {
-    $leverancier = Leverancier::find($leverancierId);
-    return view('/voeg-levering', [
-        'leverancier' => $leverancier,
-        'productId' => $productId
-    ]);
-});
+// Route::get('voeg-levering/{slug}/{rowin}', function ($leverancierId, $productId) {
+//     $leverancier = Leverancier::find($leverancierId);
+//     return view('/voeg-levering', [
+//         'leverancier' => $leverancier,
+//         'productId' => $productId
+//     ]);
+// });
 
 // Route::post('voeg-levering', 'ProductLeverancier@store')->name('ProductLeverancier.store', ProductLeverancier::class);
 
