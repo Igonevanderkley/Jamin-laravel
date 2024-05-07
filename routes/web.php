@@ -26,29 +26,7 @@ Route::get('overzicht-leveringen/{slug}', [LeveringController::class, 'index'])-
 
 Route::get('overzicht-leveranciers', [LeveringController::class, 'leveranciers'])->name('leveranciers');
 
-
-
-Route::get('overzicht-geleverde-producten/{slug}', function ($leverancierId) {
-    $leverancier = Leverancier::find($leverancierId);
-
-    $leveringen =
-        ProductLeverancier::select(
-            'Product.naam',
-            'Product.id',
-            'Magazijn.aantalAanwezig',
-            'Magazijn.verpakkingsEenheid',
-            'ProductLeverancier.datumLevering'
-        )
-        ->join('Product', 'ProductLeverancier.ProductId', '=', 'Product.Id')
-        ->join('Magazijn', 'Product.Id', '=', 'Magazijn.ProductId')
-        ->where('ProductLeverancier.leverancierId', $leverancierId)
-        ->get();
-
-    return view('overzicht-geleverde-producten', [
-        'leverancier' => $leverancier,
-        'leveringen' => $leveringen
-    ]);
-});
+Route::get('overzicht-geleverde-producten/{slug}', [LeveringController::class, 'geleverdeProducten'])->name('overzicht-geleverde-producten');
 
 Route::get('voeg-levering/{slug}/{rowin}', function ($leverancierId, $productId) {
     $leverancier = Leverancier::find($leverancierId);
