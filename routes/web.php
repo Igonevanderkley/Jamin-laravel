@@ -28,28 +28,7 @@ Route::get('overzicht-leveranciers', [LeveringController::class, 'leveranciers']
 
 Route::get('overzicht-geleverde-producten/{slug}', [LeveringController::class, 'geleverdeProducten'])->name('overzicht-geleverde-producten');
 
-// Route::get('voeg-levering/{slug}/{rowin}', function ($leverancierId, $productId) {
-//     $leverancier = Leverancier::find($leverancierId);
-//     return view('/voeg-levering', [
-//         'leverancier' => $leverancier,
-//         'productId' => $productId
-//     ]);
-// });
+Route::get('voeg-levering/{slug1}/{slug2}', [LeveringController::class, 'voegLevering'])->name('voeg-levering/{slug1}/{slug2}');
 
-// Route::post('voeg-levering', 'ProductLeverancier@store')->name('ProductLeverancier.store', ProductLeverancier::class);
+Route::post('/productleverancier/store', [LeveringController::class, 'store'])->name('ProductLeverancier.store');
 
-Route::post('/productleverancier/store', [ProductLeverancier::class, 'store'])->name('ProductLeverancier.store');
-
-
-// Route::resource('voeg-levering/{slug}', MagazijnController::class)
-//     ->only(['store']);
-
-
-
-
-
-// Route::get('categories/{category:slug}', function (Category $category) {
-//     return view('posts', [
-//         'posts' => $category->posts
-//     ]);
-// });
