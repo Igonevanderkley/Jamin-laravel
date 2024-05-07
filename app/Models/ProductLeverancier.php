@@ -19,5 +19,4 @@ class ProductLeverancier extends Model
         'productId',
     ];
 
-
 }
