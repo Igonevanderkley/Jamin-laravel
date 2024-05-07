@@ -2,17 +2,9 @@
 
 use App\Http\Controllers\AllergeenController;
 use App\Http\Controllers\MagazijnController;
-use App\Http\Controllers\LeverancierController;
 use App\Http\Controllers\LeveringController;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\DB;
-use App\Models\Product;
-use App\Models\leverancier;
 
-use App\Models\ProductLeverancier;
-
-
-use Illuminate\Support\Collection;
 
 Route::get('/', function () {
     return view('welcome-jamin');
