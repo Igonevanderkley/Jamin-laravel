@@ -32,7 +32,7 @@
             <input type="date" name="datumLevering">
         </div>
 
-        <input type="hidden" name="leverancierId "value="{{ $leverancier->id }}">
+        <input type="hidden" name="leverancierId" value="{{ $leverancier->id }}">
         <input type="hidden" name="productId" value="{{ $productId }}">
 
 
