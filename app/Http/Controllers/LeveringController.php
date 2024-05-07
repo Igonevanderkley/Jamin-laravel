@@ -69,8 +69,17 @@ class LeveringController extends Controller
 
     }
 
-    public function store(Request $request)
+    public function voegLevering($leverancierId, $productId)
     {
+        $leverancier = Leverancier::find($leverancierId);
+        return view('/voeg-levering', [
+            'leverancier' => $leverancier,
+            'productId' => $productId
+        ]);
+    }
+
+    public function store(Request $request)
+    {        
         $aantal = $request->input('aantal');
         $datumLevering = $request->input('datumLevering');
         $leverancierId_ = $request->input('leverancierId_');
