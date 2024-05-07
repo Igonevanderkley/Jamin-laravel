@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\AllergeenController;
 use App\Http\Controllers\MagazijnController;
-use App\Http\Controllers\ProductLeverancierController;
+use App\Http\Controllers\LeverancierController;
+use App\Http\Controllers\LeveringController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\DB;
 use App\Models\Product;
@@ -18,51 +20,13 @@ Route::get('/', function () {
 
 Route::get('overzicht-magazijn', [MagazijnController::class, 'index'])->name('overzicht-magazijn');
 
+Route::get('overzicht-allergenen/{slug}', [AllergeenController::class, 'index'])->name('overzicht-allergenen');
+
+Route::get('overzicht-leveringen/{slug}', [LeveringController::class, 'index'])->name('overzicht-leveringen');
+
+Route::get('overzicht-leveranciers', [LeveringController::class, 'leveranciers'])->name('leveranciers');
 
 
-Route::get('overzicht-allergenen/{slug}', function ($id) {
-    $allergenen = Product::find($id)->allergenen;
-    $productData = Product::find($id);
-
-    return view('overzicht-allergenen', [
-        'allergenen' => $allergenen,
-        'productData' => $productData
-    ]);
-});
-
-
-Route::get('overzicht-leveringen/{slug}', function ($id) {
-    $leverancier = Product::find($id)->leveranciers;
-    $product = Product::find($id);
-    $productLeverancier = ProductLeverancier::where('productId', $id)->get();
-    // $aantal = Magazijn::with('product')->where('productId', $id)->select('aantalAanwezig')->get();
-
-    return view('overzicht-leveringen', [
-        'leverancier' => $leverancier,
-        'productLeverancier' => $productLeverancier,
-        'product' => $product,
-    ]);
-});
-
-Route::get('overzicht-leveranciers', function () {
-    $leveranciers = ProductLeverancier::select(
-        'ProductLeverancier.LeverancierId',
-        'Leverancier.Naam',
-        'Leverancier.contactpersoon',
-        'Leverancier.leverancierNummer',
-        'Leverancier.mobiel',
-        DB::raw('count(distinct ProductLeverancier.ProductId) as product_count')
-    )
-
-        ->join('Leverancier', 'ProductLeverancier.LeverancierId', '=', 'Leverancier.Id')
-        ->groupBy('ProductLeverancier.LeverancierId', 'Leverancier.Naam')
-        ->get();
-
-
-    return view('overzicht-leveranciers', [
-        'leveranciers' => $leveranciers,
-    ]);
-});
 
 Route::get('overzicht-geleverde-producten/{slug}', function ($leverancierId) {
     $leverancier = Leverancier::find($leverancierId);
@@ -96,7 +60,7 @@ Route::get('voeg-levering/{slug}/{rowin}', function ($leverancierId, $productId)
 
 // Route::post('voeg-levering', 'ProductLeverancier@store')->name('ProductLeverancier.store', ProductLeverancier::class);
 
-Route::post('/productleverancier/store', [ProductLeverancierController::class, 'store'])->name('ProductLeverancier.store');
+Route::post('/productleverancier/store', [ProductLeverancier::class, 'store'])->name('ProductLeverancier.store');
 
 
 // Route::resource('voeg-levering/{slug}', MagazijnController::class)
