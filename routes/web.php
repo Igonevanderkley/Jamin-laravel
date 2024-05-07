@@ -1,10 +1,10 @@
 <?php
 
+use App\Http\Controllers\MagazijnController;
 use App\Http\Controllers\ProductLeverancierController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\DB;
 use App\Models\Product;
-use App\Models\Magazijn;
 use App\Models\leverancier;
 
 use App\Models\ProductLeverancier;
@@ -16,13 +16,9 @@ Route::get('/', function () {
     return view('welcome-jamin');
 });
 
-Route::get('overzicht-magazijn', function () {
-    $magazijnItems = Product::with('magazijn')->get();
+Route::get('overzicht-magazijn', [MagazijnController::class, 'index'])->name('overzicht-magazijn');
 
-    return view('overzicht-magazijn', [
-        'magazijnItems' => $magazijnItems
-    ]);
-});
+
 
 Route::get('overzicht-allergenen/{slug}', function ($id) {
     $allergenen = Product::find($id)->allergenen;
