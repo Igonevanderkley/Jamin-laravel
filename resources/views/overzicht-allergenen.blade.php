@@ -10,35 +10,38 @@
 </head>
 
 <body>
+    @include('partials._navbar')
     <h1>Overzicht Allergenen</h1>
 
-    <ul>
+    <ul class="add-info">
         <li>{{ $productData->naam }}</li>
         <li>{{ $productData->barcode }}</li>
     </ul>
 
-    <table>
-        @if ($allergenen->isEmpty())
-            <td>
-                In dit product zitten geen stoffen die een allergische reactie kunnen veroorzaken.
-            </td>
-        @else
-            <thead>
-                <tr>
-                    <th>Naam</th>
-                    <th>Omschrijving</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($allergenen as $item)
+    <div class="tableDiv">
+        <table>
+            @if ($allergenen->isEmpty())
+                <td>
+                    In dit product zitten geen stoffen die een allergische reactie kunnen veroorzaken.
+                </td>
+            @else
+                <thead>
                     <tr>
-                        <td>{{ $item->naam }}</td>
-                        <td>{{ $item->omschrijving }}</td>
+                        <th>Naam</th>
+                        <th>Omschrijving</th>
                     </tr>
-                @endforeach
-            </tbody>
-    </table>
-    @endif
+                </thead>
+                <tbody>
+                    @foreach ($allergenen as $item)
+                        <tr>
+                            <td>{{ $item->naam }}</td>
+                            <td>{{ $item->omschrijving }}</td>
+                        </tr>
+                    @endforeach
+                </tbody>
+        </table>
+    </div>
+        @endif
 </body>
 
 </html>

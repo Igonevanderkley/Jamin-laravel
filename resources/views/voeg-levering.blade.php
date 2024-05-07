@@ -10,9 +10,10 @@
 </head>
 
 <body>
+    @include('partials._navbar')
     <h1>Levering product</h1>
 
-    <ul>
+    <ul class="add-info">
         <li>Naam: {{ $leverancier->naam }}</li>
         <li>Contactpersoon: {{ $leverancier->contactPersoon }}</li>
         <li>Mobiel: {{ $leverancier->mobiel }}</li>

@@ -10,20 +10,21 @@
 </head>
 
 <body>
+    @include('partials._navbar')
 
     </div>
     <div class="homepage">
-        <div class="welcome">
-            <div>
-                <h1>Welcome bij</h1>
-            </div>
-            <div>
-                <img src="img/logo.jpg" alt="">
+        <div class="banner">
+            <div class="welcome-container">
+                <div class="welcome-card">
+                    <div>
+                        <h1>Welcome bij Jamin</h1>
+                        <a href="overzicht-magazijn">Magazijn overzicht</a>
+                        <a href="overzicht-leveranciers">Leveranciers</a>
+                    </div>
+                </div>
             </div>
         </div>
-
-        <a href="overzicht-magazijn">overzicht magazijn</a>
-        <a href="overzicht-leveranciers">overzichtLeveranciers</a>
     </div>
 </body>
 

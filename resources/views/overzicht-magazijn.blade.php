@@ -10,8 +10,8 @@
 </head>
 
 <body>
-    <table>
-        <h1>Overzicht Magazijn Jamin</h1>
+    @include('partials._navbar')
+        <h1>Magazijn overzicht</h1>
 
         <div class="tableDiv">
             <table>
@@ -22,8 +22,8 @@
                         <th>Verpakkings eenheid</th>
                         <th>Aantal aanwezig</th>
                         <th>Allergeen info</th>
-                        <th>Leverings info
-                        </th>
+                        <th>Leverings info</th>
+                        <th>Wijzig</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -43,14 +43,17 @@
                                     <img src="img/questionMark.svg">
                                 </a>
                             </td>
+                            <td>
+                                <a href="wijzig-product/{{ $item->id }}">
+                                    <img src="img/pencil.png">
+                                </a>
+                            </td>
                         </tr>
                     @endforeach
                 </tbody>
 
             </table>
         </div>
-
-
 </body>
 
 </html>

@@ -10,38 +10,38 @@
 </head>
 
 <body>
-    <h1>Overzicht leveranciers
-    </h1>
-</body>
+    @include('partials._navbar')
+    <h1>Overzicht leveranciers</h1>
 
-
-<table>
-    <thead>
-        <tr>
-            <th>Naam</th>
-            <th>Contactpersoon</th>
-            <th>Leveranciernummer</th>
-            <th>Mobiel</th>
-            <th>Aantal verschillende producten </th>
-            <th>Toon producten</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach ($leveranciers as $leverancier)
-            <tr>
-                <td>{{ $leverancier->Naam }}</td>
-                <td>{{ $leverancier->contactpersoon }}</td>
-                <td>{{ $leverancier->leverancierNummer }}</td>
-                <td>{{ $leverancier->mobiel }}</td>
-                <td>{{ $leverancier->product_count }}</td>
-                <td>
-                    <a href="overzicht-geleverde-producten/{{ $leverancier->LeverancierId }}">
-                        <img src="img/box.png">
-                    </a>
-                </td>
-            </tr>
-        @endforeach
-    </tbody>
-</table>
+    <div class="tableDiv">
+        <table>
+            <thead>
+                <tr>
+                    <th>Naam</th>
+                    <th>Contactpersoon</th>
+                    <th>Leveranciernummer</th>
+                    <th>Mobiel</th>
+                    <th>Aantal verschillende producten </th>
+                    <th>Toon producten</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($leveranciers as $leverancier)
+                    <tr>
+                        <td>{{ $leverancier->Naam }}</td>
+                        <td>{{ $leverancier->contactpersoon }}</td>
+                        <td>{{ $leverancier->leverancierNummer }}</td>
+                        <td>{{ $leverancier->mobiel }}</td>
+                        <td>{{ $leverancier->product_count }}</td>
+                        <td>
+                            <a href="overzicht-geleverde-producten/{{ $leverancier->LeverancierId }}">
+                                <img src="img/box.png">
+                            </a>
+                        </td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
 
 </html>
