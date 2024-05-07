@@ -79,19 +79,22 @@ class LeveringController extends Controller
     }
 
     public function store(Request $request)
-    {        
-        $aantal = $request->input('aantal');
-        $datumLevering = $request->input('datumLevering');
-        $leverancierId_ = $request->input('leverancierId_');
-        $productId = $request->input('productId');
+    {
+        $validatedData = $request->validate([
+            'aantal' => 'required|integer',
+            'datumLevering' => 'required|date',
+            'leverancierId' => 'required',
+            'productId' => 'required'
+        ]);
 
         $productLeverancier = new ProductLeverancier();
-        $productLeverancier->aantal = $aantal;
-        $productLeverancier->datumLevering = $datumLevering;
-        $productLeverancier->leverancierId = $leverancierId_;
-        $productLeverancier->productId = $productId;
+        $productLeverancier->aantal = $validatedData['aantal'];
+        $productLeverancier->datumLevering = $validatedData['datumLevering'];
+        $productLeverancier->leverancierId = $validatedData['leverancierId'];
+        $productLeverancier->productId = $validatedData['productId'];
         $productLeverancier->save();
 
-        return redirect('overzicht-geleverde-producten/' . $leverancierId_);
+        return redirect('overzicht-geleverde-producten/' . $validatedData['leverancierId']);
     }
+
 }
