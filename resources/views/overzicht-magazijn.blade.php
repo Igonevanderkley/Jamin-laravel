@@ -24,6 +24,7 @@
                         <th>Allergeen info</th>
                         <th>Leverings info</th>
                         <th>Wijzig</th>
+                        <th>Verwijder</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -48,6 +49,12 @@
                                     <img src="img/pencil.png">
                                 </a>
                             </td>
+                            <td>
+                                <a href="verwijder-product/{{ $item->id }}">
+                                    <img src="img/trash.png">
+                                </a>
+                            </td>
+
                         </tr>
                     @endforeach
                 </tbody>
