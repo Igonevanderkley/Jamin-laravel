@@ -12,7 +12,7 @@
 <body>
     @include('partials._navbar')
     <h1>Geleverde producten</h1>
-    <ul class=".add-info">
+    <ul class="add-info">
         <li>Naam: {{ $leverancier->naam }}</li>
         <li>Contactpersoon: {{ $leverancier->contactPersoon }}</li>
         <li>Leverancier nummer: {{ $leverancier->Leveranciernummer }}</li>
