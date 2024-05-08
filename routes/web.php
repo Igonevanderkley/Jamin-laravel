@@ -22,5 +22,10 @@ Route::get('overzicht-geleverde-producten/{slug}', [LeveringController::class, '
 
 Route::get('voeg-levering/{slug1}/{slug2}', [LeveringController::class, 'voegLevering'])->name('voeg-levering/{slug1}/{slug2}');
 
-Route::post('/productleverancier/store', [LeveringController::class, 'store'])->name('ProductLeverancier.store');
+Route::post('/LeveringController/store', [LeveringController::class, 'store'])->name('LeveringController.store');
 
+Route::get('wijzig-product/{slug}', [MagazijnController::class, 'wijzigIndex'])->name('wijzig-product');
+
+Route::post('/MagazijnController/update', [MagazijnController::class, 'update'])->name('MagazijnController.update');
+
+Route::get('verwijder-product/{slug}', [MagazijnController::class, 'destroy'])->name('verwijder-product');
