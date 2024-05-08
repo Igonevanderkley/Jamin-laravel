@@ -67,9 +67,4 @@ class MagazijnController extends Controller
 
         return redirect()->route('overzicht-magazijn');
     }
-
-
-
-
-    
 }
