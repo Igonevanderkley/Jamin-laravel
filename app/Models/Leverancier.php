@@ -11,6 +11,13 @@ class Leverancier extends Model
 
     protected $table = 'leverancier';
 
+    protected $fillable = [
+        'naam',
+        'contactPersoon',
+        'leveranciernummer',
+        'mobiel',
+    ];
+
 
     public function products()
     {
