@@ -19,7 +19,6 @@ class MagazijnController extends Controller
         ]);
     }
     
-
     public function wijzigIndex($itemId)
     {
         $productData = Product::where('id', $itemId)->get();
@@ -68,4 +67,9 @@ class MagazijnController extends Controller
 
         return redirect()->route('overzicht-magazijn');
     }
+
+
+
+
+    
 }
