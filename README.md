@@ -1,6 +1,6 @@
 # Jamin Candyshop
 
-![Jamin Candyshop Logo](/public/img/jamin-logo.jpg)
+![Jamin Candyshop Logo](/public/img/jamin-logo.png)
 
 Welcome to Jamin Candyshop, where sweet dreams come true!
 
