@@ -27,18 +27,18 @@ class LeveringController extends Controller
 
     public function leveranciers()
     {
-        $leveranciers = ProductLeverancier::select(
-            'ProductLeverancier.LeverancierId',
+        $leveranciers = Leverancier::select(
+            'Leverancier.Id',
             'Leverancier.Naam',
             'Leverancier.contactpersoon',
             'Leverancier.leverancierNummer',
             'Leverancier.mobiel',
             DB::raw('count(distinct ProductLeverancier.ProductId) as product_count')
         )
+        ->leftJoin('ProductLeverancier', 'ProductLeverancier.LeverancierId', '=', 'Leverancier.Id')
+        ->groupBy('Leverancier.Id', 'Leverancier.Naam', 'Leverancier.contactpersoon', 'Leverancier.leverancierNummer', 'Leverancier.mobiel')
+        ->get();
 
-            ->join('Leverancier', 'ProductLeverancier.LeverancierId', '=', 'Leverancier.Id')
-            ->groupBy('ProductLeverancier.LeverancierId', 'Leverancier.Naam')
-            ->get();
 
 
         return view('overzicht-leveranciers', [
