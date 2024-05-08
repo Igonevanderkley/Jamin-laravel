@@ -50,9 +50,39 @@ body {
     border-radius: 5px;
 }
 
-.welcome-card a:hover {
+.welcome-card .reads a:hover {
     background-color: #6727bf;
     color: white;
+}
+
+li img {
+    height: 4rem;
+}
+
+li img {
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+}
+
+.function-icons {
+    gap: 2rem;
+    display: flex;
+    justify-content: center;
+    list-style: none;
+}
+
+.function-icons a {
+    background-color: transparent;
+    color: black;
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 }
 
 .navbar {
@@ -105,7 +135,8 @@ tr:nth-child(odd) {
     background-color: #eae6f9; /* Set your desired background color */
 }
 
-h1, h4 {
+h1,
+h4 {
     text-align: center;
     margin: 0.5rem;
 
@@ -121,6 +152,28 @@ h1, h4 {
     list-style: none;
     gap: 1rem;
 }
+
+/* Add button */
+.back {
+    margin: 2rem;
+    margin-left: 1rem;
+}
+
+.back a:hover,
+.button a:hover {
+    background-color: #461092;
+}
+
+.button a,
+.back a {
+    font-size: 1.4rem;
+    text-decoration: none;
+    padding: 1rem;
+    background-color: #691dd3;
+    color: #fff;
+    border-radius: 0.3rem;
+}
+
 /* table */
 
 .tableDiv {
@@ -163,7 +216,7 @@ form {
     flex-direction: column;
     /* text-align: center; */
     width: 35rem;
-    height: 35rem;
+    height: fit-content;
     padding: 1.5rem;
 }
 
@@ -212,4 +265,10 @@ form .buttons button {
 form .buttons a:hover,
 form .buttons button:hover {
     background-color: #461092;
+}
+
+form select {
+    font-size: 1.3rem;
+    width: 16rem;
+    height: 3rem;
 }
