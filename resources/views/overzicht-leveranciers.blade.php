@@ -17,6 +17,13 @@
         <table>
             <thead>
                 <tr>
+                    <th>
+                        <div class="button">
+                            <a href="voeg-leverancier">Voeg leverancier toe</a>
+                        </div>
+                    </th>
+                </tr>
+                <tr>
                     <th>Naam</th>
                     <th>Contactpersoon</th>
                     <th>Leveranciernummer</th>
@@ -34,7 +41,7 @@
                         <td>{{ $leverancier->mobiel }}</td>
                         <td>{{ $leverancier->product_count }}</td>
                         <td>
-                            <a href="overzicht-geleverde-producten/{{ $leverancier->LeverancierId }}">
+                            <a href="overzicht-geleverde-producten/{{ $leverancier->Id }}">
                                 <img src="img/box.png">
                             </a>
                         </td>
