@@ -27,11 +27,11 @@
             @csrf
 
             <div class="input">
-                <label for="aantal">aantalProductheden</label>
+                <label for="aantal">Aantal Producten</label>
                 <input type="number" name="aantal">
             </div>
             <div class="input">
-                <label for="datumLevering">Datum eerstvolgende levering
+                <label for="datumLevering">Datum levering
                 </label>
                 <input type="date" name="datumLevering">
             </div>
@@ -41,7 +41,7 @@
 
 
             <div class="buttons">
-                <button type="submit">Sla op</button>
+                <button type="submit">Opslaan</button>
                 <a href="/overzicht-geleverde-producten/{{ $leverancier->id }}">Terug</a>
             </div>
         </form>
