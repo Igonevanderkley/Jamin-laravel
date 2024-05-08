@@ -54,7 +54,7 @@ class MagazijnController extends Controller
         $magazijnProduct->aantalAanwezig = $validatedData['aantalAanwezig'];
         $magazijnProduct->save();
 
-        return redirect()->route('overzicht-magazijn');
+        return redirect()->route('overzicht-magazijn')->with('success', 'Product is gewijzigd.');
     }
 
     public function destroy($itemId)
@@ -65,6 +65,39 @@ class MagazijnController extends Controller
         $magazijnProduct = Magazijn::where('productId', $itemId)->first();
         $magazijnProduct->delete();
 
-        return redirect()->route('overzicht-magazijn');
+        return redirect()->route('overzicht-magazijn')->with('success', 'Product is verwijderd.');
+    }
+
+    public function createIndex()
+    {
+        return view('voeg-product');
+    }
+
+    public function store(Request $request)
+    {
+        $validatedData = $request->validate([
+            'naam' => 'required|string',
+            'barcode' => 'required|numeric',
+            'verpakkingsEenheid' => 'required',
+            'aantalAanwezig' => 'integer'
+        ], [
+            'naam.required' => 'Een naam is verplicht.',
+            'barcode.required' => 'Een barcode is verplicht.',
+            'barcode.numeric' => 'Een barcode moet valide getal zijn.',
+            'verpakkingsEenheid.required' => 'Een erpakkings eenheid is verplicht.',
+        ]);
+
+        $product = new Product();
+        $product->naam = $validatedData['naam'];
+        $product->barcode = $validatedData['barcode'];
+        $product->save();
+
+        $magazijnProduct = new Magazijn();
+        $magazijnProduct->productId = $product->id;
+        $magazijnProduct->verpakkingsEenheid = $validatedData['verpakkingsEenheid'];
+        $magazijnProduct->aantalAanwezig = $validatedData['aantalAanwezig'];
+        $magazijnProduct->save();
+
+        return redirect()->route('overzicht-magazijn')->with('success', 'Product is toegevoegd.');
     }
 }
