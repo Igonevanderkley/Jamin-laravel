@@ -3,6 +3,8 @@
 use App\Http\Controllers\AllergeenController;
 use App\Http\Controllers\MagazijnController;
 use App\Http\Controllers\LeveringController;
+use App\Http\Controllers\LeverancierController;
+
 use Illuminate\Support\Facades\Route;
 
 
@@ -29,3 +31,12 @@ Route::get('wijzig-product/{slug}', [MagazijnController::class, 'wijzigIndex'])-
 Route::post('/MagazijnController/update', [MagazijnController::class, 'update'])->name('MagazijnController.update');
 
 Route::get('verwijder-product/{slug}', [MagazijnController::class, 'destroy'])->name('verwijder-product');
+
+Route::get('voeg-product', [MagazijnController::class, 'createIndex'])->name('voeg-product');
+
+Route::post('/MagazijnController/store', [MagazijnController::class, 'store'])->name('MagazijnController.store');
+
+Route::get('voeg-leverancier', [LeverancierController::class, 'index'])->name('voeg-leverancier');
+
+Route::post('/LeverancierController/store', [LeverancierController::class, 'store'])->name('LeverancierController.store');
+
