@@ -19,30 +19,33 @@
         <li>Mobiel: {{ $leverancier->mobiel }}</li>
     </ul>
 
-    <form action="{{ route('ProductLeverancier.store') }}" method="POST">
-
-        @csrf
-
-        <div class="input">
-            <label for="aantal">aantalProductheden</label>
-            <input type="number" name="aantal">
-        </div>
-        <div class="input">
-            <label for="datumLevering">Datum eerstvolgende levering
-            </label>
-            <input type="date" name="datumLevering">
-        </div>
-
-        <input type="hidden" name="leverancierId" value="{{ $leverancier->id }}">
-        <input type="hidden" name="productId" value="{{ $productId }}">
+    <div class="form-container">
 
 
-        <div class="buttons">
-            <button type="submit">Sla op</button>
-            <a href="/overzicht-geleverde-producten/{{ $leverancier->id }}">Terug</a>
-            <a href="/">Home</a>
-        </div>
-    </form>
+        <form action="{{ route('LeveringController.store') }}" method="POST">
+
+            @csrf
+
+            <div class="input">
+                <label for="aantal">aantalProductheden</label>
+                <input type="number" name="aantal">
+            </div>
+            <div class="input">
+                <label for="datumLevering">Datum eerstvolgende levering
+                </label>
+                <input type="date" name="datumLevering">
+            </div>
+
+            <input type="hidden" name="leverancierId" value="{{ $leverancier->id }}">
+            <input type="hidden" name="productId" value="{{ $productId }}">
+
+
+            <div class="buttons">
+                <button type="submit">Sla op</button>
+                <a href="/overzicht-geleverde-producten/{{ $leverancier->id }}">Terug</a>
+            </div>
+        </form>
+    </div>
 
 
 </body>
