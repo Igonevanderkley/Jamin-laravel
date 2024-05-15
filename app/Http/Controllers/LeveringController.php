@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\ProductLeverancier;
 use Illuminate\Http\Request;
 use App\Models\Product;
-use Illuminate\Support\Facades\DB;
 use App\Models\Leverancier;
 
 class LeveringController extends Controller
@@ -25,26 +24,7 @@ class LeveringController extends Controller
         ]);
     }
 
-    public function leveranciers()
-    {
-        $leveranciers = Leverancier::select(
-            'Leverancier.Id',
-            'Leverancier.Naam',
-            'Leverancier.contactpersoon',
-            'Leverancier.leverancierNummer',
-            'Leverancier.mobiel',
-            DB::raw('count(distinct ProductLeverancier.ProductId) as product_count')
-        )
-        ->leftJoin('ProductLeverancier', 'ProductLeverancier.LeverancierId', '=', 'Leverancier.Id')
-        ->groupBy('Leverancier.Id', 'Leverancier.Naam', 'Leverancier.contactpersoon', 'Leverancier.leverancierNummer', 'Leverancier.mobiel')
-        ->get();
-
-
-
-        return view('overzicht-leveranciers', [
-            'leveranciers' => $leveranciers,
-        ]);
-    }
+   
 
     public function geleverdeProducten($leverancierId)
     {
@@ -69,7 +49,7 @@ class LeveringController extends Controller
 
     }
 
-    public function voegLevering($leverancierId, $productId)
+    public function create($leverancierId, $productId)
     {
         $leverancier = Leverancier::find($leverancierId);
         return view('/voeg-levering', [
