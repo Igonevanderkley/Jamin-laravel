@@ -3,13 +3,31 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Models\Leverancier;
 
 
 class LeverancierController extends Controller
 {
-
     public function index()
+    {
+        $leveranciers = Leverancier::select(
+            'Leverancier.Id',
+            'Leverancier.Naam',
+            'Leverancier.contactpersoon',
+            'Leverancier.leverancierNummer',
+            'Leverancier.mobiel',
+            DB::raw('count(distinct ProductLeverancier.ProductId) as product_count')
+        )
+            ->leftJoin('ProductLeverancier', 'ProductLeverancier.LeverancierId', '=', 'Leverancier.Id')
+            ->groupBy('Leverancier.Id', 'Leverancier.Naam', 'Leverancier.contactpersoon', 'Leverancier.leverancierNummer', 'Leverancier.mobiel')
+            ->get();
+        return view('overzicht-leveranciers', [
+            'leveranciers' => $leveranciers,
+        ]);
+    }
+
+    public function create()
     {
         return view('voeg-leverancier');
     }
