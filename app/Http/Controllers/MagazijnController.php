@@ -19,7 +19,7 @@ class MagazijnController extends Controller
         ]);
     }
     
-    public function wijzigIndex($itemId)
+    public function edit($itemId)
     {
         $productData = Product::where('id', $itemId)->get();
         $magazijnData = Magazijn::where('productId', $itemId)->get();
@@ -68,7 +68,7 @@ class MagazijnController extends Controller
         return redirect()->route('overzicht-magazijn')->with('success', 'Product is verwijderd.');
     }
 
-    public function createIndex()
+    public function create()
     {
         return view('voeg-product');
     }
