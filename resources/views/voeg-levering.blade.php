@@ -41,8 +41,8 @@
 
 
             <div class="buttons">
-                <button type="submit">Opslaan</button>
                 <a href="/overzicht-geleverde-producten/{{ $leverancier->id }}">Terug</a>
+                <button type="submit">Opslaan</button>
             </div>
         </form>
     </div>

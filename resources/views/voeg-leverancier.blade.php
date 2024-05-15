@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="/style.css">
-    <title>product toevoegen</title>
+    <title>Product toevoegen</title>
 </head>
 
 <body>
@@ -24,7 +24,7 @@
             @csrf
             <div class="input">
                 <label for="Naam">Naam</label>
-                <input type="text" name="naam" placeholder="Haribo">
+                <input type="text" name="Naam" placeholder="Haribo">
             </div>
 
             <div class="input">
