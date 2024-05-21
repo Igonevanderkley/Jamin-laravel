@@ -12,6 +12,12 @@
 <body>
     @include('partials._navbar')
 
+    @extends('layouts.app')
+
+    @section('content')
+        <example-component></example-component>
+    @endsection
+
     </div>
     <div class="homepage">
         <div class="banner">
